@@ -3,8 +3,8 @@ import {canPlaceOnTop, DeckService, rankIndex} from '../../services/deck.service
 import { Card } from '../../models/card.model';
 import { CommonModule } from '@angular/common';
 import { CardComponent } from '../card/card.component';
-import {CdkDropList, CdkDropListGroup, CdkDragDrop, CdkDrag, transferArrayItem} from '@angular/cdk/drag-drop';
-import {Router, RouterLink} from '@angular/router';
+import {CdkDropList, CdkDragDrop} from '@angular/cdk/drag-drop';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-game-board',
@@ -13,9 +13,6 @@ import {Router, RouterLink} from '@angular/router';
     CardComponent,
     CdkDropList,
     CdkDropList,
-    CdkDropListGroup,
-    CdkDrag,
-    RouterLink
   ],
   templateUrl: './game-board.component.html',
   styleUrl: './game-board.component.css'

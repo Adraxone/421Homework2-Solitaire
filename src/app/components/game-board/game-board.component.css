@@ -55,14 +55,6 @@
   min-height: 1000px;
 }
 
-.draggable-wrapper {
-  margin-top: -85px; /* Adjust for 120px height cards */
-}
-
-.draggable-wrapper:first-child {
-  margin-top: 0;
-}
-
 .column app-card {
   margin-top: -85px;
 }
