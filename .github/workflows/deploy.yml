@@ -28,5 +28,5 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: dist/solitaire-clone
+          folder: dist/solitaire-clone/browser
           token: ${{ secrets.GH_TOKEN }}
