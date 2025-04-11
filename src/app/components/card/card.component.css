@@ -1,0 +1,44 @@
+.card {
+  width: 80px;
+  height: 120px;
+  border: 1px solid black;
+  border-radius: 6px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  margin: 4px;
+  cursor: grab;
+  user-select: none;
+}
+
+.preview-disable {
+  transform: none !important;
+}
+
+.card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card:active {
+  cursor: grabbing;
+  transform: scale(1.01);
+}
+
+.face-down {
+  background-color: indianred;
+  color: white;
+}
+
+.back {
+  font-size: 1.5rem;
+  text-align: center;
+  line-height: 120px;
+}
+
+.rank, .suit {
+  font-size: 1.4rem;
+  font-weight: bold;
+}

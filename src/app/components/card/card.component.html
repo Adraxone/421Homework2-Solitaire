@@ -1,0 +1,17 @@
+<div
+  class="card"
+  cdkDrag="card.faceUp"
+  [cdkDragDisabled] = "!card.faceUp"
+  [cdkDragData]="stack.length > 0 ? stack : [card]"
+  [ngClass]="card.faceUp ? '' : 'preview-disable'"
+  [class.face-down]="!card.faceUp"
+  (dblclick)="onDoubleClick()"
+>
+  <ng-container *ngIf="card.faceUp; else back">
+    <div class="rank" [style.color]="suitColor">{{ card.rank }}</div>
+    <div class="suit" [style.color]="suitColor">{{ suitSymbol }}</div>
+  </ng-container>
+  <ng-template #back>
+    <div class="back">🂠</div>
+  </ng-template>
+</div>

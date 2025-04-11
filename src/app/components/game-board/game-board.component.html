@@ -1,0 +1,69 @@
+<button (click)="quitGame()">Quit Game</button>
+<button (click)="undo()">Undo</button>
+
+
+<div class="stock-row">
+  <div class="stock" (click)="drawFromStock()">
+    <div *ngIf="stockPile.length > 0" class="card back">🂠</div>
+    <div *ngIf="stockPile.length === 0" class="card empty">⭮</div>
+  </div>
+</div>
+
+<div
+  class="waste"
+  cdkDropList
+  [cdkDropListData]="wastePile"
+  [cdkDropListConnectedTo]="connectedDropLists"
+  id="waste"
+>
+  <app-card
+    *ngIf="wastePile.length > 0"
+    [card]="wastePile[0]"
+    (doubleClicked)="handleAutoMove($event)"
+  ></app-card>
+</div>
+
+<div class="foundation-row">
+  <div
+    *ngFor="let foundation of foundations"
+    class="foundation"
+    cdkDropList
+    cdkDropListSortingDisabled
+    [cdkDropListData]="foundation.pile"
+    [cdkDropListConnectedTo]="connectedDropLists"
+    [id]="'foundation-' + foundation.suit"
+    (cdkDropListDropped)="onFoundationDrop($event, foundation.suit)"
+  >
+    <app-card
+      *ngIf="foundation.pile.length > 0"
+      [card]="foundation.pile[foundation.pile.length - 1]"
+    ></app-card>
+    <div *ngIf="foundation.pile.length === 0" class="foundation-placeholder">
+      {{ foundation.suit | titlecase }}
+    </div>
+  </div>
+</div>
+
+<div class="tableau">
+  <div
+    *ngFor="let column of tableau; let colIndex = index"
+    class="column"
+    cdkDropList
+    cdkDropListSortingDisabled
+    [cdkDropListData]="column"
+    [cdkDropListConnectedTo]="connectedDropLists"
+    [id]="'col-' + colIndex"
+    (cdkDropListDropped)="onCardDrop($event, colIndex)"
+  >
+    <app-card
+      *ngFor="let card of column; let cardIndex = index"
+      [card]="card"
+      [stack]="getDraggableStack(column, cardIndex)"
+      (doubleClicked)="handleAutoMove($event)"
+    ></app-card>
+
+    <ng-template [ngIf]="column.length === 0">
+      <div class="empty-slot"></div>
+    </ng-template>
+  </div>
+</div>
